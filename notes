@@ -1,0 +1,10 @@
+<-- ===== checkout Coupon Code Html ===== --> 
+<hr class="bg-grey-black">
+<div class="validate-ref-input-wrap">
+    <div class="validate-ref-input">
+        <input type="text" name="referralCode" placeholder="Have a referral code ?" maxlength="6" id="refCode" class="valid" aria-invalid="false">
+        <span class="valid-check text-primary hide"><i class="fas fa-check"></i></span>
+        <span class="valid-wrong text-grey hide" id="removeRefCode"><a>Remove</a></span>
+    </div>
+    <div id="validateRefCode" class="btn btn-primary"><span>Apply</span></div>
+</div>

@@ -1,0 +1,1 @@
+[14-Oct-2021 07:17:28 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home3/webeeuhv/public_html/euleradm/php/module/contact/list.php on line 12

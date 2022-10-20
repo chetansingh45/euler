@@ -1,0 +1,85 @@
+:root {
+    --primary: #56cfed;
+    --font-t: 'archiathin';
+    --font-l: 'archialight';
+    --font-r: 'archiaregular';
+    --font-m: 'archiamedium';
+    --font-sm: 'archiasemibold';
+    --font-b: 'archiabold';
+}
+/* ----- Dashboard Font ----- */
+@font-face {
+    font-family: 'archiabold';
+    src: url('fonts/archia-bold-webfont.woff2') format('woff2'),
+        url('fonts/archia-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'archialight';
+    src: url('fonts/archia-light-webfont.woff2') format('woff2'),
+        url('fonts/archia-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'archiamedium';
+    src: url('fonts/archia-medium-webfont.woff2') format('woff2'),
+        url('fonts/archia-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'archiaregular';
+    src: url('fonts/archia-regular-webfont.woff2') format('woff2'),
+        url('fonts/archia-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'archiasemibold';
+    src: url('fonts/archia-semibold-webfont.woff2') format('woff2'),
+        url('fonts/archia-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'archiathin';
+    src: url('fonts/archia-thin-webfont.woff2') format('woff2'),
+        url('fonts/archia-thin-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ----- Default Css ---- */
+body {
+    font-size: 16px;
+    color: var(--dark);
+    position: relative;
+    font-family: var(--font-r);
+}
+@media (max-width: 767px) {
+    body {
+        font-size: 14px;
+    }
+}
+p {
+    font-family: var(--font-r);
+    margin: 0 0 20px 0;
+}
+
+/* ----- Admin Css ----- */
+.page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu .sidebar-header {
+    font-weight: 400;
+}
+.page-wrapper .page-body-wrapper .page-header .row h3, .page-wrapper .page-body-wrapper .page-header .breadcrumb .breadcrumb-item {
+    font-family: var(--font-r);
+}
+.dataTables_wrapper table.dataTable th, .dataTables_wrapper table.dataTable td {
+    font-size: 12px;
+}
+.dataTables_wrapper table.dataTable th {
+    border-top: 1px solid #000;
+    background: #eee !important;
+}
+

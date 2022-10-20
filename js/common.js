@@ -1,0 +1,144 @@
+const snackbar = (m) =>
+{
+    const {success, message} = m
+    if(message === '' || message === undefined) return;
+    let x = document.getElementById("snackbar");
+    x.innerHTML = message;
+    x.style.backgroundColor = success ? "#32502E" : "#FF5C58";
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
+const commonAjax = (o) => {
+
+const { page, params, type, header, addonUrl, cors } = o;
+
+const customHeader = new Headers();
+console.log(customHeader);
+// customHeader.append("Content-Type", "application/json");
+customHeader.append("Accept", "application/json");
+customHeader.append("Access-Control-Allow-Origin", "*")
+customHeader.append('X-CSRF-TOKEN', $('meta[name="csrf-token"]').attr('content'))
+
+const method = type || 'POST';
+let url = addonUrl || 'http://localhost/euler-new1';
+let request = url+page;
+const raw = params || '';
+const myHeaders = header || customHeader;
+const corspolicy = cors || 'cors'
+request = request.replace(/&amp;/g, '&')
+var requestOptions = {
+  method: method,
+  headers: myHeaders,
+  body: raw,
+  mode: corspolicy
+};
+
+if(method === 'GET') {delete requestOptions['body'];}
+
+const myPromise = new Promise(function(myResolve, myReject) {
+  fetch(request, requestOptions)
+  .then(response => response.json())
+  .then(response => myResolve(response))
+  .catch(error => {
+    console.log(error);
+    return myReject({"success": false});
+  });
+});
+return myPromise;
+}
+
+const JqueryAjax = async (page) => {
+    const rawResponse = await $.ajax({
+        url: page,
+        type: 'GET',
+        dataType: 'json',
+        async: true,
+    })
+    let temp =  await rawResponse;
+    return temp;
+}
+
+/*
+State City API
+==================== */
+const reSetToken = async () => {
+    const myHeaders = new Headers();
+    myHeaders.append("api-token", "cMa6_xhAPb2CgE5CiSdb2eLupuJNwQRfwqfnzILgKswRo96bBRQ4WBZI4zQiF9MMi7I");
+    myHeaders.append("Accept", "application/json")
+    myHeaders.append('user-email', 'anku.pathak@webeesocial.com')
+    return await commonAjax({
+        page: '/api/getaccesstoken',
+        header: myHeaders,
+        addonUrl: 'https://www.universal-tutorial.com',
+        type: 'GET'
+    })
+    .then(response => {
+        localStorage.setItem("access-token", response.auth_token);
+        // getCollection(n)
+        return true;
+    })
+    .catch(err => {localStorage.removeItem("access-token"); return false;})
+} 
+
+let flag = 0;
+let reset = 0;
+const getCollection = (n, p, prop) => {
+    console.log(n)
+    const myPromise = new Promise(function(myResolve, myReject) {
+        if(reset > 10) return myResolve({"success": 1});
+        if(!localStorage.getItem("access-token")){
+            // reSetToken(n);
+             return myResolve({"success": 0});
+        } else
+        {
+            let url = '';
+            if(n === 'country') url = 'countries/'
+            else if(n === 'state') url = `states/${(p === false ? document.querySelector(`select[data-world-${prop}="country"]`).value : p)}`
+            else if(n === 'city') url = `cities/${(p === false ? document.querySelector(`select[data-world-${prop}="state"]`).value : p)}`
+    
+            if(url === '') return;
+    
+            const myHeaders = new Headers();
+            myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access-token")}`);
+            myHeaders.append("Accept", "application/json")
+            commonAjax({
+                page: url,
+                header: myHeaders,
+                addonUrl: 'https://www.universal-tutorial.com/api/',
+                type: 'GET'
+            })
+            .then(response => {
+                if(response?.error) {
+                    // reSetToken(n);
+                    reset++
+                    return myResolve({"success": 0});
+                }
+                let collection = "";
+                if(n === 'country')
+                {
+                    collection = "<option selected disabled value=''>Select Country</option>";
+                    for(let i = 0; i < response.length; i++) collection += `<option value="${response[i].country_name}">${response[i].country_name}</option>`;
+                    document.querySelector(`select[data-world-${prop}="country"]`).innerHTML = collection;
+                    return myResolve({"success": 200})
+                } else if(n === 'state')
+                {
+                    collection = "<option selected disabled  value=''>Select State</option>";
+                    for(let i = 0; i < response.length; i++) collection += `<option value="${response[i].state_name}">${response[i].state_name}</option>`;
+                    document.querySelector(`select[data-world-${prop}="state"]`).innerHTML = collection;
+                    return myResolve({"success": 200})
+                }
+                else if(n === 'city')
+                {
+                    collection = "<option selected disabled  value=''>Select City</option>";
+                    for(let i = 0; i < response.length; i++) collection += `<option value="${response[i].city_name}">${response[i].city_name}</option>`;
+                    document.querySelector(`select[data-world-${prop}="city"]`).innerHTML = collection;
+                    return myResolve({"success": 200})
+                }
+    
+            })
+            .catch(err => { reset++; return myResolve({"success": 0}) })
+        }
+    });
+    return myPromise;
+}

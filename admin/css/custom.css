@@ -1,0 +1,334 @@
+:root {
+    --primary: #2e2e2e;
+    --secondary: #9ccdfb;
+    --primary-hover: #444;
+    --primary-yellow: #F7D600;
+    --nav-headbg: #fff;
+    --sidebar-bg: #fff;
+    --danger-light: #fee6ea;
+    --danger: #f72b50;
+    --rgba-primary-5: var(--primary);
+    --rgba-primary-1: #d6ebff;
+    --rgba-blue: #d9f6f3;
+}
+
+.form-control{
+    border-color: #eee;
+}
+
+.btn {
+    border-radius: .25rem;
+    padding: 10px 26px;
+}
+
+.font-normal {
+    font-style: normal;
+}
+
+.bg-primary-light {
+    background: var(--rgba-primary-1) !important;
+}
+
+.bg-blue-light {
+    background: var(--rgba-blue) !important;
+}
+
+a:hover {
+    color: var(--primary);
+}
+
+/* ----- Header ----- */
+.brand-logo img {
+    max-width: 150px;
+}
+
+.header-profile>a {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-profile>a>svg {
+    stroke: #fff;
+}
+
+.header-profile .dropdown-menu a:hover, .header-profile .dropdown-menu a:focus, .header-profile .dropdown-menu a.active {
+    color: var(--primary);
+}
+
+.nav-header, .dlabnav {
+    width: 18rem;
+}
+
+[data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .nav-header .brand-logo img {
+    max-width: 80px;
+}
+
+.search-btn {
+    background-color: #fff;
+    padding: 5px;
+}
+
+.search-btn .btn {
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dlabnav .metismenu {
+    padding-top: 0;
+}
+
+.dlabnav .metismenu ul li:not(:last-child) {
+    border-bottom: 1px solid #eee;
+}
+
+.dlabnav .metismenu ul a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.dlabnav .metismenu ul a.mm-active {
+    background-color: var(--rgba-primary-1);
+}
+
+@media (min-width: 768px) {
+    .search-area {
+        max-width: 450px;
+        margin-left: auto;
+    }
+}
+
+/* ----- Sidebar ----- */
+.dlabnav {
+    z-index: 9999;
+}
+
+.metismenu .has-arrow:after {
+    border-color: rgba(255, 255, 255, 0.85) transparent transparent rgba(255, 255, 255, 0.85);
+    -webkit-transform: rotate(-225deg) translateY(-50%);
+    transform: rotate(-225deg) translateY(-50%);
+}
+
+[data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .dlabnav .metismenu li>ul {
+    background: var(--primary);
+}
+
+/* ----- Table ----- */
+table.dataTable thead th {
+    font-size: 14px;
+}
+
+table.dataTable tbody td {
+    font-size: 12px;
+}
+
+.badge-lg {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+table .btn {
+    padding: 3px 10px;
+    font-size: 12px !important;
+}
+
+table.dataTable thead .sorting {
+    background-size: 14px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.previous, .dataTables_wrapper .dataTables_paginate .paginate_button.next, .dataTables_wrapper .dataTables_paginate span .paginate_button {
+    border-radius: .25rem;
+}
+
+@media (max-width: 1400px) {
+    table.dataTable thead th {
+        font-size: 14px;
+    }
+
+    table.dataTable tbody td {
+        font-size: 12px;
+    }
+}
+
+/* ----- Job List ----- */
+.job_list_icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.jobs2.inactive .job_list_icon {
+    background-color: var(--danger-light);
+}
+
+.job_list_icon svg {
+    fill: #fff;
+    width: 30px;
+    height: 30px;
+}
+
+.jobs2.inactive .job_list_icon svg {
+    fill: var(--danger)
+}
+
+.jobs2.inactive .text-primary {
+    color: var(--danger) !important;
+}
+
+.abs-status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.user img {
+    width: inherit;
+    height: inherit;
+}
+
+/* ----- Code Editor ----- */
+.code_editor ul li {
+    list-style-type: inherit;
+}
+
+.code_editor ul li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+/* ----- Card ----- */
+.card, .sec-head {
+    border-radius: 0.25rem;
+}
+
+.dataTablesCard {
+    border-radius: 0.25rem;
+}
+
+.gellery_img {
+    position: relative;
+}
+
+.copy_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    background-color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    transform: translateY(15px);
+    transition: all 0.3s ease;
+}
+
+.copy_img:hover {
+    background-color: #666;
+}
+
+.copy_img svg {
+    color: #fff;
+}
+
+.gellery_img:hover .copy_img {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.gellery_head_right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.upload_btn {
+    width: 40px;
+    height: 40px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload_btn:hover {
+    color: #fff;
+    background-color: #666;
+}
+
+#flexSwitchCheckDefault:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+#snackbar {
+    visibility: hidden;
+    /* Hidden by default. Visible on click */
+    min-width: 250px;
+    /* Set a default minimum width */
+    margin-left: -125px;
+    /* Divide value of min-width by 2 */
+    /* background-color: #333; */
+    /* Black background color */
+    /* color: #fff; */
+    /* White text color */
+    text-align: center;
+    /* Centered text */
+    /* border-radius: 2px; */
+    /* Rounded borders */
+    /* padding: 16px; */
+    /* Padding */
+    position: fixed;
+    /* Sit on top of the screen */
+    z-index: 999;
+    /* Add a z-index if needed */
+    left: 50%;
+    /* Center the snackbar */
+    bottom: 30px;
+    /* 30px from the bottom */
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0.3;
+    }
+
+    to {
+        bottom: 4%;
+        opacity: 1;
+    }
+}
+
+#snackbar.show {
+    visibility: visible;
+    /* -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s; */
+    animation: fadein 0.5s ease-out 0.5;
+}
+
+/* on  hovering cursor move*/
+.cursor-move:hover {
+    cursor: move;
+}

@@ -1,0 +1,2 @@
+[21-Oct-2021 08:25:04 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home3/webeeuhv/public_html/euleradm/admin/php/module/order/list.php on line 13
+[21-Oct-2021 08:25:20 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home3/webeeuhv/public_html/euleradm/admin/php/module/order/list.php on line 13
